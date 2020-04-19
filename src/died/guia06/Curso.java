@@ -68,5 +68,15 @@ public class Curso {
 		}
 	}
 
+	/**
+	 * GETTER CREDITOS
+	 * @return the creditos
+	 */
+	public Integer getCreditos() {
+		return creditos;
+	}
+	
+	
+
 
 }
