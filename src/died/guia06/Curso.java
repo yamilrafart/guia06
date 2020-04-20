@@ -159,7 +159,6 @@ public class Curso {
 		return inscriptos;
 	}
 	
-	
 	public void inscribirAlumno(Alumno a) throws InscribirAlumnoException, RegistroAuditoriaException{
 		
 		int contCursos = 0; 
@@ -173,7 +172,7 @@ public class Curso {
 		} else if (this.inscriptos.size() == this.cupo) {
 			throw new InscribirAlumnoException("Cupo cubierto");
 		} else if (contCursos == 3) {
-			throw new InscribirAlumnoException("Ya inscripto en 3 cursos en este ciclolectivo");
+			throw new InscribirAlumnoException("Ya inscripto a 3 cursos en este ciclo lectivo");
 		}
 		try {
 			log.registrar(this, "inscribir ",a.toString());
@@ -183,8 +182,6 @@ public class Curso {
 			e.printStackTrace();
 			throw new RegistroAuditoriaException("Error al inscribir al alumno: " + e.getMessage());
 		}
-//		this.inscriptos.add(a);
-//		a.inscripcionAceptada(this);
 	}
 
 }

@@ -44,6 +44,7 @@ public class Alumno implements Comparable<Alumno>{
 	public void aprobar(Curso c) {
 		this.cursando.remove(c);
 		this.aprobados.add(c);
+		c.getInscriptos().remove(this);
 	}
 
 	public void inscripcionAceptada(Curso c) {
