@@ -160,7 +160,7 @@ public class Curso {
 	}
 	
 	
-	public void inscribitAlumno(Alumno a) throws InscribirAlumnoException, RegistroAuditoriaException{
+	public void inscribirAlumno(Alumno a) throws InscribirAlumnoException, RegistroAuditoriaException{
 		
 		int contCursos = 0; 
 		for(Curso unCurso : a.getCursando()) {         // Obtener la cantidad de materias del mismo ciclo lectivo del curso.
