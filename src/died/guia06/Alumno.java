@@ -19,8 +19,6 @@ public class Alumno implements Comparable<Alumno>{
 	public Alumno() {
 		super();
 	}
-	
-	
 
 	/**
 	 * CONSTRUCTOR
@@ -34,11 +32,9 @@ public class Alumno implements Comparable<Alumno>{
 		this.cursando = new ArrayList<Curso>();
 		this.aprobados = new ArrayList<Curso>();
 	}
-
-
 	
-	public int creditosObtenidos() {
-		int creditos = 0;
+	public Integer creditosObtenidos() {
+		Integer creditos = 0;
 		for (Curso unCurso : this.aprobados) {
 			creditos += unCurso.getCreditos();
 		}
@@ -66,8 +62,6 @@ public class Alumno implements Comparable<Alumno>{
 		return this.nombre.compareTo(unAlumno.nombre);
 	}
 
-
-
 	/**
 	 * @return the aprobados
 	 */
@@ -75,14 +69,26 @@ public class Alumno implements Comparable<Alumno>{
 		return aprobados;
 	}
 
-
-
 	/**
 	 * @return the cursando
 	 */
 	public List<Curso> getCursando() {
 		return cursando;
 	}
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @return the nroLibreta
+	 */
+	public Integer getNroLibreta() {
+		return nroLibreta;
+	}	
 	
 	
 
