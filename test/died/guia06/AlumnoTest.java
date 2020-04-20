@@ -7,13 +7,8 @@ import org.junit.jupiter.api.Test;
 
 class AlumnoTest {
 	
-	Alumno a1 = new Alumno("Yamil", 1);
+	Alumno a1 = new Alumno("a", 1);
 	Curso c1 = new Curso(1,"DIED",2020,30,5,5);
-
-	@BeforeEach
-	public void init() {
-		
-	}
 	
 	@Test
 	void testCreditosObtenidos() {

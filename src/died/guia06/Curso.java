@@ -72,19 +72,26 @@ public class Curso {
 	 * @return
 	 */
 	public Boolean inscribir(Alumno a) {		
-		try {
-			log.registrar(this, "inscribir ",a.toString());
-			if ((a.creditosObtenidos() >= this.creditosRequeridos)&&(this.inscriptos.size() < this.cupo)&&(a.getCursando().size() < 3)) {
-				this.inscriptos.add(a);
-				this.cupo++;
-				a.inscripcionAceptada(this);
-				return true;
+		int contCursos = 0; 
+		for(Curso unCurso : a.getCursando()) {         // Obtener la cantidad de materias del mismo ciclo lectivo del curso.
+			if(unCurso.cicloLectivo.equals(this.cicloLectivo)) {
+				contCursos++;
 			}
-			//return false;
-		} catch (IOException e) {
-			System.out.println("Error al inscribir al alumno: " + e.getMessage());
 		}
-		return false;
+		if ((a.creditosObtenidos() >= this.creditosRequeridos)&&(this.inscriptos.size() < this.cupo)&&(contCursos < 3)) {
+			try {
+				log.registrar(this, "inscribir ",a.toString());
+					this.inscriptos.add(a);
+					this.cupo++;
+					a.inscripcionAceptada(this);
+			} catch (IOException e) {
+				System.out.println("Error al inscribir al alumno: " + e.getMessage());
+				return false;
+			}
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	
@@ -142,8 +149,15 @@ public class Curso {
 	public Integer getCreditos() {
 		return creditos;
 	}
-	
-	
 
+	/**
+	 * @return the inscriptos
+	 */
+	public List<Alumno> getInscriptos() {
+		return inscriptos;
+	}
+	
+	
+	
 
 }
