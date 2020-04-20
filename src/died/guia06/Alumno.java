@@ -1,5 +1,6 @@
 package died.guia06;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,7 +14,7 @@ public class Alumno implements Comparable<Alumno>{
 	
 	
 	/**
-	 * CONSTRUCTOR
+	 * CONSTRUCTOR POR DEFECTO
 	 */
 	public Alumno() {
 		super();
@@ -25,19 +26,17 @@ public class Alumno implements Comparable<Alumno>{
 	 * CONSTRUCTOR
 	 * @param nombre
 	 * @param nroLibreta
-	 * @param cursando
-	 * @param aprobados
 	 */
-	public Alumno(String nombre, Integer nroLibreta, List<Curso> cursando, List<Curso> aprobados) {
+	public Alumno(String nombre, Integer nroLibreta) {
 		super();
 		this.nombre = nombre;
 		this.nroLibreta = nroLibreta;
-		this.cursando = cursando;
-		this.aprobados = aprobados;
+		this.cursando = new ArrayList<Curso>();
+		this.aprobados = new ArrayList<Curso>();
 	}
 
 
-
+	
 	public int creditosObtenidos() {
 		int creditos = 0;
 		for (Curso unCurso : this.aprobados) {
@@ -59,19 +58,30 @@ public class Alumno implements Comparable<Alumno>{
 	public boolean equals(Object obj) {
 		if (this == obj) return true;
 		if (obj == null) return false;
-		if (obj instanceof Alumno) {
-			Alumno other = (Alumno) obj;
-			if (this.nroLibreta == null) {
-				if (other.nroLibreta != null) return false;
-			} else if (!this.nroLibreta.equals(other.nroLibreta)) return false;
-			return true;
-		}
-		return false;
+		return ((obj instanceof Alumno)&&(this.nroLibreta.equals(((Alumno)obj).nroLibreta)));
 	}
 	
 	@Override
 	public int compareTo(Alumno unAlumno) {
 		return this.nombre.compareTo(unAlumno.nombre);
+	}
+
+
+
+	/**
+	 * @return the aprobados
+	 */
+	public List<Curso> getAprobados() {
+		return aprobados;
+	}
+
+
+
+	/**
+	 * @return the cursando
+	 */
+	public List<Curso> getCursando() {
+		return cursando;
 	}
 	
 	

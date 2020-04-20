@@ -26,12 +26,38 @@ public class Curso {
 	
 	private Registro log;
 	
+	/**
+	 * CONSTRUCTOR POR DEFECTO
+	 */
 	public Curso() {
 		super();
 		this.inscriptos = new ArrayList<Alumno>();
 		this.log = new Registro();
 	}
-	
+
+	/**
+	 * CONSTRUCTOR
+	 * @param id
+	 * @param nombre
+	 * @param cicloLectivo
+	 * @param cupo
+	 * @param creditos
+	 * @param creditosRequeridos
+	 */
+	public Curso(Integer id, String nombre, Integer cicloLectivo, Integer cupo,Integer creditos, Integer creditosRequeridos) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.cicloLectivo = cicloLectivo;
+		this.cupo = cupo;
+		this.inscriptos = new ArrayList<Alumno>();
+		this.creditos = creditos;
+		this.creditosRequeridos = creditosRequeridos;
+		this.log = new Registro();
+	}
+
+
+
 
 	/**
 	 * Este método, verifica si el alumno se puede inscribir y si es así lo agrega al curso,
@@ -69,7 +95,6 @@ public class Curso {
 	}
 
 	/**
-	 * GETTER CREDITOS
 	 * @return the creditos
 	 */
 	public Integer getCreditos() {
