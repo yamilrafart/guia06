@@ -160,6 +160,31 @@ public class Curso {
 	}
 	
 	
-	
+	public void inscribitAlumno(Alumno a) throws InscribirAlumnoException, RegistroAuditoriaException{
+		
+		int contCursos = 0; 
+		for(Curso unCurso : a.getCursando()) {         // Obtener la cantidad de materias del mismo ciclo lectivo del curso.
+			if(unCurso.cicloLectivo.equals(this.cicloLectivo)) {
+				contCursos++;
+			}
+		}
+		if (a.compareTo(a) < this.creditosRequeridos) {
+			throw new InscribirAlumnoException("Creditos insuficientes");
+		} else if (this.inscriptos.size() == this.cupo) {
+			throw new InscribirAlumnoException("Cupo cubierto");
+		} else if (contCursos == 3) {
+			throw new InscribirAlumnoException("Ya inscripto en 3 cursos en este ciclolectivo");
+		}
+		try {
+			log.registrar(this, "inscribir ",a.toString());
+			this.inscriptos.add(a);
+			a.inscripcionAceptada(this);
+		} catch (IOException e) {	
+			e.printStackTrace();
+			throw new RegistroAuditoriaException("Error al inscribir al alumno: " + e.getMessage());
+		}
+//		this.inscriptos.add(a);
+//		a.inscripcionAceptada(this);
+	}
 
 }
