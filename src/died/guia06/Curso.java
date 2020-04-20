@@ -82,7 +82,6 @@ public class Curso {
 			try {
 				log.registrar(this, "inscribir ",a.toString());
 					this.inscriptos.add(a);
-					this.cupo++;
 					a.inscripcionAceptada(this);
 			} catch (IOException e) {
 				System.out.println("Error al inscribir al alumno: " + e.getMessage());
@@ -102,8 +101,9 @@ public class Curso {
 		try {
 			log.registrar(this, "imprimir listado",this.inscriptos.size()+ " registros ");
 			Collections.sort(this.inscriptos, new CompardorAlumnoAlfabeticamente());
+			System.out.println("Orden alfabetico:");
 			for(Alumno a: this.inscriptos) {
-				System.out.println("" + a.getNombre() + " Nro de libreta: " + a.getNroLibreta());
+				System.out.println("" + a.getNombre() + ", Nro de libreta: " + a.getNroLibreta());
 			}
 		} catch (IOException e) {
 			System.out.println("Error al imprimir inscriptos: " + e.getMessage());
@@ -118,8 +118,9 @@ public class Curso {
 		try {
 			log.registrar(this, "imprimir listado",this.inscriptos.size()+ " registros ");
 			Collections.sort(this.inscriptos,new ComparadorAlumnoPorNroLibreta());
+			System.out.println("Orden segun el numero de la libreta:");
 			for(Alumno a: this.inscriptos) {
-				System.out.println("" + a.getNombre() + " Nro de libreta: " + a.getNroLibreta());
+				System.out.println("" + a.getNombre() + ", Nro de libreta: " + a.getNroLibreta());
 			}
 		} catch (IOException e) {
 			System.out.println("Error al imprimir inscriptos: " + e.getMessage());
@@ -134,8 +135,9 @@ public class Curso {
 		try {
 			log.registrar(this, "imprimir listado",this.inscriptos.size()+ " registros ");
 			Collections.sort(this.inscriptos, new ComparadorAlumnoPorCreditos());
+			System.out.println("Orden segun la cantidad de creditos:");
 			for(Alumno a: this.inscriptos) {
-				System.out.println("" + a.getNombre() + " Nro de libreta: " + a.getNroLibreta());
+				System.out.println("" + a.getNombre() + ", Nro de libreta: " + a.getNroLibreta());
 			}
 		} catch (IOException e) {
 			System.out.println("Error al imprimir inscriptos: " + e.getMessage());
